@@ -14,6 +14,8 @@ public struct RangeSlider: View {
     @Binding var min: Double
     @Binding var max: Double
     
+    let range: ClosedRange<Int>
+    
     @State private var width: CGFloat = 0
     @State private var widthTwo: CGFloat = 15
     @State var isDraggingLeft = false
@@ -21,11 +23,17 @@ public struct RangeSlider: View {
     @State var totalScreen: CGFloat = 0
     
     let offsetValue: CGFloat = 30
-    let maxValue: CGFloat = 70_000
+    var maxValue: CGFloat
     
-    public init(minValue: Binding<Double>, maxValue: Binding<Double>) {
+    init(
+        minValue: Binding<Double>,
+        maxValue: Binding<Double>,
+        range: ClosedRange<Int> = 1...100
+    ) {
         _min = minValue
         _max = maxValue
+        self.range = range
+        self.maxValue = CGFloat(range.upperBound)
     }
     
     var lowerValue: Int {
@@ -105,6 +113,6 @@ public struct RangeSlider: View {
 }
 
 #Preview {
-    RangeSlider(minValue: .constant(0), maxValue: .constant(70000))
+    RangeSlider(minValue: .constant(0), maxValue: .constant(0))
 }
 

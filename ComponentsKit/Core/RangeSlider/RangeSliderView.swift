@@ -20,7 +20,11 @@ struct RangeSliderView: View {
                 minValueTextField
                 maxValueTextField
             }
-            RangeSlider(minValue: $viewModel.minValue, maxValue: $viewModel.maxValue)
+            RangeSlider(
+                minValue: $viewModel.minValue,
+                maxValue: $viewModel.maxValue,
+                range: viewModel.sliderRange
+            )
         }
         .navigationTitle("Range Slider")
         .padding()

@@ -9,16 +9,22 @@ import Foundation
 
 extension RangeSliderView {
     @MainActor final class ViewModel: ObservableObject {
+    
+        // MARK: Constants
+        
+        let sliderRange = 0...100_000
         
         // MARK: Published
         
-        @Published var minValue: Double = 0
-        @Published var maxValue: Double = 10_000
+        @Published var minValue: Double
+        @Published var maxValue: Double
         @Published var minValueString = ""
         @Published var maxValueString = ""
         @Published var isTextFieldEditing = false
         
         init() {
+            minValue = Double(sliderRange.lowerBound)
+            maxValue = Double(sliderRange.upperBound)
             setSliderValues()
             setMinPriceText(price: Int(minValue))
             setMaxPriceText(price: Int(maxValue))
@@ -45,18 +51,21 @@ extension RangeSliderView {
         }
         
         func setSliderValues() {
+            let upperBound = Double(sliderRange.upperBound)
+            let lowerBound = Double(sliderRange.lowerBound)
+            
             if let min = Double(minValueString) {
-                if min <= maxValue && min >= 0 {
+                if min <= maxValue && min >= lowerBound {
                     minValue = min
                 } else {
                     minValue = maxValue
                 }
             }
             if let max = Double(maxValueString) {
-                if max >= minValue && max <= 70_000 {
+                if max >= minValue && max <= upperBound {
                     maxValue = max
-                } else if max > 70_000 {
-                    maxValue = 70_000
+                } else if max > upperBound {
+                    maxValue = upperBound
                 } else {
                     maxValue = minValue
                 }
