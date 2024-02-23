@@ -34,12 +34,12 @@ extension RangeSliderView {
         
         func setMinPriceText(price: Int) {
             let formatPrice = priceFormate(number: price)
-            minValueString = "\(formatPrice) ₽"
+            minValueString = "\(formatPrice) €"
         }
         
         func setMaxPriceText(price: Int) {
             let formatPrice = priceFormate(number: price)
-            maxValueString = "\(formatPrice) ₽"
+            maxValueString = "\(formatPrice) €"
         }
         
         func priceFormate(number: Int) -> String {

@@ -49,7 +49,7 @@ struct WebBrowserView: View {
     
     private var dismissButton: some ToolbarContent {
         ToolbarItemGroup(placement: .cancellationAction) {
-            Button("Закрыть", action: { dismiss() })
+            Button("Close", action: { dismiss() })
         }
     }
     
