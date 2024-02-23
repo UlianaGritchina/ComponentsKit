@@ -1,7 +1,7 @@
 
 # Components Kit
 
-SwiftUI project where examples of the implementation of various work tasks are collected
+SwiftUI project where collected examples of the implementation of various work tasks.
 
 Web Browser
 
